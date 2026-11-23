@@ -4,38 +4,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vorblick: Einkauf &amp; Budget – Offizielle Entwicklerseite</title>
-  <meta name="description" content="Vorblick hilft dir, Einkäufe smart zu planen und dein Haushaltsbudget jederzeit im Blick zu behalten. Offizielle Entwickler- und Supportseite.">
-  <meta name="theme-color" content="#0f766e">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230f766e'/%3E%3Cpath d='M18 22l14 24 14-24' fill='none' stroke='%23ffffff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <meta name="description" content="Vorblick: Einkauf & Budget – 100 % lokal & ohne Registrierung. Smarte Spracheingabe, KI-Bon-Scanner, Monats-Budget und Haushalts-Sync für Android.">
+  <meta name="theme-color" content="#0b3b44">
+
+  <!-- Echtes App-Icon als Favicon -->
+  <link rel="icon" type="image/png" href="icon.png">
+  <link rel="apple-touch-icon" href="icon.png">
+
+  <!-- Vorschau beim Teilen (WhatsApp, Telegram, etc.) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Vorblick: Einkauf &amp; Budget">
+  <meta property="og:description" content="100 % lokal &amp; ohne Registrierung – Smarte Spracheingabe, KI-Bon-Scanner, Monats-Budget und Haushalts-Sync.">
+  <meta property="og:image" content="https://profmaschin.github.io/Vorstellungsgrafik.jpg">
+  <meta property="og:url" content="https://profmaschin.github.io/">
+
   <style>
     :root {
-      --bg: #f8fafc;
+      --bg: #f6faf9;
       --surface: #ffffff;
-      --surface-alt: #f1f5f9;
-      --text: #0f172a;
-      --text-muted: #475569;
-      --border: #e2e8f0;
-      --accent: #0f766e;
-      --accent-hover: #115e59;
-      --accent-soft: #ccfbf1;
-      --accent-soft-text: #115e59;
-      --shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.08);
-      --radius: 16px;
+      --text: #0b1f26;
+      --text-muted: #466068;
+      --border: #dce8e6;
+      --accent: #0d8a7e;
+      --accent-hover: #0a6d64;
+      --accent-soft: #d9f5ef;
+      --accent-soft-text: #095952;
+      --shadow: 0 12px 32px -12px rgba(9, 44, 52, 0.12);
+      --hero-shadow: 0 24px 54px -16px rgba(7, 46, 54, 0.32);
+      --radius: 18px;
     }
 
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #0b1120;
-        --surface: #111827;
-        --surface-alt: #1e293b;
-        --text: #f8fafc;
-        --text-muted: #94a3b8;
-        --border: #1f2937;
-        --accent: #14b8a6;
-        --accent-hover: #2dd4bf;
-        --accent-soft: rgba(20, 184, 166, 0.14);
-        --accent-soft-text: #5eead4;
-        --shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.45);
+        --bg: #071318;
+        --surface: #0d1f26;
+        --text: #f1faf8;
+        --text-muted: #9ab7bc;
+        --border: #17343d;
+        --accent: #19b5a3;
+        --accent-hover: #2cd1bd;
+        --accent-soft: rgba(25, 181, 163, 0.15);
+        --accent-soft-text: #7ef2e2;
+        --shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.5);
+        --hero-shadow: 0 24px 60px -16px rgba(0, 0, 0, 0.65);
       }
     }
 
@@ -67,7 +78,7 @@
     }
 
     .container {
-      max-width: 960px;
+      max-width: 980px;
       margin: 0 auto;
       padding: 0 24px;
     }
@@ -76,8 +87,8 @@
     header {
       position: sticky;
       top: 0;
-      z-index: 10;
-      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      z-index: 20;
+      background: color-mix(in srgb, var(--bg) 86%, transparent);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
@@ -87,38 +98,38 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 68px;
+      height: 70px;
       gap: 16px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       color: var(--text);
+      letter-spacing: -0.01em;
     }
 
     .brand:hover {
       text-decoration: none;
     }
 
-    .brand-icon {
-      width: 34px;
-      height: 34px;
+    .brand-logo {
+      width: 38px;
+      height: 38px;
       border-radius: 10px;
-      background: var(--accent);
-      display: grid;
-      place-items: center;
-      color: #ffffff;
+      display: block;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(9, 44, 52, 0.18);
       flex-shrink: 0;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 22px;
+      gap: 24px;
       font-size: 0.95rem;
       font-weight: 500;
     }
@@ -134,7 +145,7 @@
 
     /* Hero */
     .hero {
-      padding: 76px 0 56px;
+      padding: 60px 0 44px;
       text-align: center;
     }
 
@@ -144,24 +155,24 @@
       gap: 8px;
       background: var(--accent-soft);
       color: var(--accent-soft-text);
-      font-size: 0.85rem;
+      font-size: 0.86rem;
       font-weight: 600;
-      padding: 6px 14px;
+      padding: 7px 15px;
       border-radius: 999px;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
 
     .hero h1 {
       font-size: clamp(2rem, 4.5vw, 3.1rem);
-      line-height: 1.15;
+      line-height: 1.14;
       letter-spacing: -0.025em;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .hero p {
-      max-width: 620px;
-      margin: 0 auto 32px;
-      font-size: 1.1rem;
+      max-width: 650px;
+      margin: 0 auto 28px;
+      font-size: 1.08rem;
       color: var(--text-muted);
     }
 
@@ -170,6 +181,7 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 12px;
+      margin-bottom: 42px;
     }
 
     .btn {
@@ -208,13 +220,30 @@
       border-color: var(--accent);
     }
 
+    /* Vorstellungsgrafik */
+    .hero-media {
+      max-width: 920px;
+      margin: 0 auto;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--hero-shadow);
+      background: #082d35;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
     /* Sections */
     section {
-      padding: 40px 0;
+      padding: 42px 0;
     }
 
     .section-title {
-      font-size: 1.5rem;
+      font-size: 1.55rem;
       letter-spacing: -0.02em;
       margin-bottom: 8px;
     }
@@ -224,10 +253,10 @@
       margin-bottom: 28px;
     }
 
-    /* Features Grid */
+    /* Features 2x2 Grid */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 20px;
     }
 
@@ -251,7 +280,7 @@
     }
 
     .card h3 {
-      font-size: 1.1rem;
+      font-size: 1.12rem;
       margin-bottom: 8px;
     }
 
@@ -315,7 +344,7 @@
 
     /* Footer */
     footer {
-      margin-top: 48px;
+      margin-top: 44px;
       border-top: 1px solid var(--border);
       padding: 28px 0 40px;
       color: var(--text-muted);
@@ -328,6 +357,19 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-brand img {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      display: block;
     }
 
     .footer-links {
@@ -344,13 +386,19 @@
       color: var(--text);
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 680px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
       .nav-links {
         gap: 14px;
         font-size: 0.88rem;
       }
       .hero {
-        padding: 52px 0 36px;
+        padding: 44px 0 32px;
+      }
+      .hero-media {
+        border-radius: 16px;
       }
       .card, .support-box, .legal-card {
         padding: 22px;
@@ -363,11 +411,7 @@
   <header>
     <div class="container nav">
       <a href="#" class="brand">
-        <span class="brand-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 6l7 13 7-13"/>
-          </svg>
-        </span>
+        <img src="icon.png" alt="Vorblick App-Icon" class="brand-logo" width="38" height="38">
         <span>Vorblick</span>
       </a>
       <nav class="nav-links" aria-label="Hauptnavigation">
@@ -381,54 +425,76 @@
   <main class="container">
     <!-- Hero -->
     <section class="hero">
-      <div class="badge">Android App &middot; Einkauf &amp; Budget</div>
+      <div class="badge">100&nbsp;% lokal &amp; ohne Registrierung &middot; Android App</div>
       <h1>Einkauf planen.<br>Budget im Blick behalten.</h1>
       <p>
-        <strong>Vorblick: Einkauf &amp; Budget</strong> bringt Struktur in deinen Alltag – von der smarten
-        Einkaufsliste bis zur klaren Übersicht über deine laufenden Ausgaben.
+        <strong>Vorblick: Einkauf &amp; Budget</strong> kombiniert smarte Spracheingabe, KI-Bon-Scanner,
+        Monats-Budget und Haushalts-Sync in einer klaren, schnellen Android-App.
       </p>
       <div class="cta-group">
         <a href="#support" class="btn btn-primary">Kontakt &amp; Support</a>
         <a href="https://vorblick.hovai.de/datenschutz.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Datenschutzerklärung</a>
       </div>
+
+      <div class="hero-media">
+        <img src="Vorstellungsgrafik.jpg" alt="Vorblick: Einkauf & Budget – Smarte Spracheingabe, KI-Bon-Scanner, Monats-Budget und Haushalts-Sync">
+      </div>
     </section>
 
     <!-- Features -->
     <section id="funktionen">
-      <h2 class="section-title">Entwickelt für den Alltag</h2>
-      <p class="section-subtitle">Schlank, übersichtlich und auf das Wesentliche konzentriert.</p>
+      <h2 class="section-title">Alles für deinen Einkauf in einer App</h2>
+      <p class="section-subtitle">Ohne Konto-Zwang, direkt einsatzbereit und auf deinen Alltag zugeschnitten.</p>
 
       <div class="grid">
         <article class="card">
           <div class="card-icon" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 11l3 3L22 4"/>
-              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+              <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+              <line x1="12" y1="19" x2="12" y2="22"/>
             </svg>
           </div>
-          <h3>Smarte Einkaufslisten</h3>
-          <p>Artikel schnell erfassen, übersichtlich ordnen und im Markt ohne langes Suchen abhaken.</p>
+          <h3>Smarte Spracheingabe</h3>
+          <p>Einfach einsprechen – z.&nbsp;B. „3x Bio-Milch, Butter, Kaffee“ – und Vorblick sortiert deine Einkaufsliste automatisch.</p>
         </article>
 
         <article class="card">
           <div class="card-icon" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              <path d="M3 7V5a2 2 0 0 1 2-2h2"/>
+              <path d="M17 3h2a2 2 0 0 1 2 2v2"/>
+              <path d="M21 17v2a2 2 0 0 1-2 2h-2"/>
+              <path d="M7 21H5a2 2 0 0 1-2-2v-2"/>
+              <line x1="7" y1="12" x2="17" y2="12"/>
             </svg>
           </div>
-          <h3>Budget-Kontrolle</h3>
-          <p>Behalte Einkaufskosten und Ausgaben transparent im Blick – ohne komplizierte Tabellen.</p>
+          <h3>KI-Bon-Scanner</h3>
+          <p>Kassenbons nach dem Einkauf kurz abfotografieren und Ausgaben ohne lästiges Abtippen direkt erfassen.</p>
         </article>
 
         <article class="card">
           <div class="card-icon" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-              <line x1="12" y1="18" x2="12.01" y2="18"/>
+              <path d="M21.21 15.89A10 10 0 1 1 8 2.83"/>
+              <path d="M22 12A10 10 0 0 0 12 2v10z"/>
             </svg>
           </div>
-          <h3>Direkt startklar</h3>
-          <p>Fokussierte Bedienung für Android, optimiert für schnelle Eingaben unterwegs und zu Hause.</p>
+          <h3>Monats-Budget</h3>
+          <p>Ausgaben übersichtlich nach Kategorien auswerten und jederzeit sehen, wie viel Budget noch offen ist.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+              <path d="M3 3v5h5"/>
+              <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/>
+              <path d="M16 16h5v5"/>
+            </svg>
+          </div>
+          <h3>Haushalts-Sync</h3>
+          <p>Gemeinsam einkaufen und planen – Einkaufslisten und Ausgaben bequem im Haushalt auf dem gleichen Stand halten.</p>
         </article>
       </div>
     </section>
@@ -443,8 +509,8 @@
             Schreib uns einfach direkt per E-Mail.
           </p>
         </div>
-        <!-- ANPASSEN: Deine Support-E-Mail-Adresse eintragen -->
-        <a href="mailto:[ninovation.studio@gmail.com]?subject=Support%20Vorblick%20App" class="btn btn-primary">
+        <!-- ANPASSEN: Deine Support-E-Mail-Adresse -->
+        <a href="mailto:ninovation.studio@gmail.com?subject=Support%20Vorblick%20App" class="btn btn-primary">
           E-Mail senden
         </a>
       </div>
@@ -459,24 +525,21 @@
         <div class="legal-grid">
           <div class="legal-block">
             <h3>Verantwortlicher Anbieter</h3>
-            <!-- ANPASSEN: Exakt deine ladungsfähigen Daten (wie im Play Console Händlerstatus) -->
+            <!-- ANPASSEN: Deine ladungsfähigen Daten (wie im Play Console Händlerstatus) -->
             <p>
-              <strong>[Nino Valva / Ninovation.studio]</strong><br>
-              [Dürerstr.52]<br>
-              [79618 Rheinfelden]<br>
+              <strong> Nino Valva / Ninovation.studio </strong><br>
+              Dürerstr.52<br>
+              79618 Rheinfelden<br>
               Deutschland
             </p>
           </div>
 
           <div class="legal-block">
             <h3>Kontakt</h3>
-            <!-- ANPASSEN: Deine Kontakt-E-Mail (optional Telefonnummer) -->
+            <!-- ANPASSEN: Deine Kontakt-E-Mail -->
             <p>
-              E-Mail: <a href="mailto:[ninovation.studio@gmail.com]">[ninovation.studio@gmail.com]</a>
+              E-Mail: <a href="mailto:ninovation.studio@gmail.com">ninovation.studio@gmail.com</a>
             </p>
-            <!-- Falls du eine USt-IdNr. hast, Kommentar entfernen und eintragen:
-            <p>USt-IdNr.: DE123456789</p>
-            -->
           </div>
         </div>
 
@@ -515,7 +578,10 @@
   <footer>
     <div class="container footer-inner">
       <!-- ANPASSEN: Name oder Studio-Name -->
-      <span>&copy; 2026 [Nino Valva / Ninovation.studio] &middot; Vorblick App</span>
+      <span class="footer-brand">
+        <img src="icon.png" alt="" width="22" height="22">
+        <span>&copy; 2026 Nino ValvaE / Ninovation.studio &middot; Vorblick App</span>
+      </span>
       <div class="footer-links">
         <a href="#impressum">Impressum</a>
         <a href="https://vorblick.hovai.de/datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutz</a>
