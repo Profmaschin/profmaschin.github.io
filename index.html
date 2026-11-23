@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vorblick: Einkauf &amp; Budget – Offizielle Entwicklerseite</title>
+  <meta name="description" content="Vorblick hilft dir, Einkäufe smart zu planen und dein Haushaltsbudget jederzeit im Blick zu behalten. Offizielle Entwickler- und Supportseite.">
+  <meta name="theme-color" content="#0f766e">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230f766e'/%3E%3Cpath d='M18 22l14 24 14-24' fill='none' stroke='%23ffffff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-alt: #f1f5f9;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --accent: #0f766e;
+      --accent-hover: #115e59;
+      --accent-soft: #ccfbf1;
+      --accent-soft-text: #115e59;
+      --shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.08);
+      --radius: 16px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b1120;
+        --surface: #111827;
+        --surface-alt: #1e293b;
+        --text: #f8fafc;
+        --text-muted: #94a3b8;
+        --border: #1f2937;
+        --accent: #14b8a6;
+        --accent-hover: #2dd4bf;
+        --accent-soft: rgba(20, 184, 166, 0.14);
+        --accent-soft-text: #5eead4;
+        --shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.45);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text);
+    }
+
+    .brand:hover {
+      text-decoration: none;
+    }
+
+    .brand-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: var(--accent);
+      display: grid;
+      place-items: center;
+      color: #ffffff;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 76px 0 56px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-soft);
+      color: var(--accent-soft-text);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4.5vw, 3.1rem);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      max-width: 620px;
+      margin: 0 auto 32px;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+    }
+
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+    }
+
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+    }
+
+    /* Sections */
+    section {
+      padding: 40px 0;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    /* Features Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--accent-soft);
+      color: var(--accent-soft-text);
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    /* Support Box */
+    .support-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .support-box p {
+      color: var(--text-muted);
+      max-width: 560px;
+      margin-top: 6px;
+    }
+
+    /* Legal / Impressum */
+    .legal-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .legal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+      margin-top: 20px;
+    }
+
+    .legal-block h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .legal-block p {
+      font-size: 0.94rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 24px 0;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 48px;
+      border-top: 1px solid var(--border);
+      padding: 28px 0 40px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    @media (max-width: 600px) {
+      .nav-links {
+        gap: 14px;
+        font-size: 0.88rem;
+      }
+      .hero {
+        padding: 52px 0 36px;
+      }
+      .card, .support-box, .legal-card {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand">
+        <span class="brand-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 6l7 13 7-13"/>
+          </svg>
+        </span>
+        <span>Vorblick</span>
+      </a>
+      <nav class="nav-links" aria-label="Hauptnavigation">
+        <a href="#funktionen">Funktionen</a>
+        <a href="#support">Support</a>
+        <a href="#impressum">Impressum</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="badge">Android App &middot; Einkauf &amp; Budget</div>
+      <h1>Einkauf planen.<br>Budget im Blick behalten.</h1>
+      <p>
+        <strong>Vorblick: Einkauf &amp; Budget</strong> bringt Struktur in deinen Alltag – von der smarten
+        Einkaufsliste bis zur klaren Übersicht über deine laufenden Ausgaben.
+      </p>
+      <div class="cta-group">
+        <a href="#support" class="btn btn-primary">Kontakt &amp; Support</a>
+        <a href="https://vorblick.hovai.de/datenschutz.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Datenschutzerklärung</a>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="funktionen">
+      <h2 class="section-title">Entwickelt für den Alltag</h2>
+      <p class="section-subtitle">Schlank, übersichtlich und auf das Wesentliche konzentriert.</p>
+
+      <div class="grid">
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 11l3 3L22 4"/>
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+            </svg>
+          </div>
+          <h3>Smarte Einkaufslisten</h3>
+          <p>Artikel schnell erfassen, übersichtlich ordnen und im Markt ohne langes Suchen abhaken.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </div>
+          <h3>Budget-Kontrolle</h3>
+          <p>Behalte Einkaufskosten und Ausgaben transparent im Blick – ohne komplizierte Tabellen.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+              <line x1="12" y1="18" x2="12.01" y2="18"/>
+            </svg>
+          </div>
+          <h3>Direkt startklar</h3>
+          <p>Fokussierte Bedienung für Android, optimiert für schnelle Eingaben unterwegs und zu Hause.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Support -->
+    <section id="support">
+      <div class="support-box">
+        <div>
+          <h2 class="section-title" style="margin-bottom: 0;">Fragen, Feedback oder Fehler gefunden?</h2>
+          <p>
+            Du nutzt Vorblick im Test oder im Alltag und hast Verbesserungsvorschläge oder ein technisches Problem?
+            Schreib uns einfach direkt per E-Mail.
+          </p>
+        </div>
+        <!-- ANPASSEN: Deine Support-E-Mail-Adresse eintragen -->
+        <a href="mailto:[ninovation.studio@gmail.com]?subject=Support%20Vorblick%20App" class="btn btn-primary">
+          E-Mail senden
+        </a>
+      </div>
+    </section>
+
+    <!-- Impressum & Datenschutz -->
+    <section id="impressum">
+      <div class="legal-card">
+        <h2 class="section-title">Impressum &amp; Rechtliches</h2>
+        <p class="section-subtitle" style="margin-bottom: 0;">Angaben gemäß § 5 DDG</p>
+
+        <div class="legal-grid">
+          <div class="legal-block">
+            <h3>Verantwortlicher Anbieter</h3>
+            <!-- ANPASSEN: Exakt deine ladungsfähigen Daten (wie im Play Console Händlerstatus) -->
+            <p>
+              <strong>[Nino Valva / Ninovation.studio]</strong><br>
+              [Dürerstr.52]<br>
+              [79618 Rheinfelden]<br>
+              Deutschland
+            </p>
+          </div>
+
+          <div class="legal-block">
+            <h3>Kontakt</h3>
+            <!-- ANPASSEN: Deine Kontakt-E-Mail (optional Telefonnummer) -->
+            <p>
+              E-Mail: <a href="mailto:[ninovation.studio@gmail.com]">[ninovation.studio@gmail.com]</a>
+            </p>
+            <!-- Falls du eine USt-IdNr. hast, Kommentar entfernen und eintragen:
+            <p>USt-IdNr.: DE123456789</p>
+            -->
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="legal-grid" style="margin-top: 0;">
+          <div class="legal-block">
+            <h3>Datenschutz</h3>
+            <p>
+              Informationen zur Verarbeitung personenbezogener Daten in der App <strong>Vorblick</strong>
+              findest du in unserer Datenschutzerklärung:
+            </p>
+            <p>
+              <a href="https://vorblick.hovai.de/datenschutz.html" target="_blank" rel="noopener noreferrer">
+                Datenschutzerklärung öffnen &rarr;
+              </a>
+            </p>
+            <p style="font-size: 0.85rem;">
+              Hinweis zu dieser Website: Diese statische Informationsseite wird über GitHub Pages bereitgestellt
+              und verwendet keine eigenen Cookies, kein Tracking und keine externen Schriftarten.
+            </p>
+          </div>
+
+          <div class="legal-block">
+            <h3>Verbraucherstreitbeilegung</h3>
+            <p>
+              Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
+              Verbraucherschlichtungsstelle teilzunehmen (§ 36 VSBG).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <!-- ANPASSEN: Name oder Studio-Name -->
+      <span>&copy; 2026 [Nino Valva / Ninovation.studio] &middot; Vorblick App</span>
+      <div class="footer-links">
+        <a href="#impressum">Impressum</a>
+        <a href="https://vorblick.hovai.de/datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutz</a>
+        <a href="#support">Kontakt</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
